@@ -8,7 +8,7 @@ import { VendorModule } from './vendor/vendor.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://127.0.0.1:27017'),
+    MongooseModule.forRoot('mongodb://127.0.0.1:27017' || process.env.MONGO_DB),
     VendorModule,
     ProductModule,
   ],
