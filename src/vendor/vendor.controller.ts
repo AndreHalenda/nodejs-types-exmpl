@@ -4,14 +4,13 @@ import { VendorDto } from './vendor.create.dto';
 import { ProductService } from 'src/product/product.service';
 
 @Controller('vendors')
+@UseInterceptors(CacheInterceptor)
 export class VendorController {
   constructor(
       private readonly vendorService: VendorService,
-      private readonly productService: ProductService,
     ) {}
 
   @Get('all')
-  @UseInterceptors(CacheInterceptor)
   async getAllVendors() {
     return await this.vendorService.findAll();
   }
@@ -33,10 +32,6 @@ export class VendorController {
 
   @Delete(':id')
   async deleteVendor(@Param('id') id: string) {
-    const product = await this.productService.findByVendor(id); 
-    if (!product) {
       return await this.vendorService.delete(id);
-    }
-    throw new Error("Current vendor related to" + product);
   }
 }

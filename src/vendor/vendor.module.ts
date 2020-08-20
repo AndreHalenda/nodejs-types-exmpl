@@ -1,4 +1,4 @@
-import { Module, CacheModule } from '@nestjs/common';
+import { Module, CacheModule, forwardRef } from '@nestjs/common';
 import { VendorController } from './vendor.controller';
 import { VendorService } from './vendor.service';
 import { Vendor, VendorSchema } from './vendor.schema';
@@ -14,9 +14,10 @@ import { Product, ProductSchema } from 'src/product/product.schema';
     ]),
     CacheModule.register({
       ttl: 300,
-    })
+    }),
   ],
   controllers: [VendorController],
   providers: [VendorService, ProductService],
+  exports: [VendorService],
 })
 export class VendorModule {}
