@@ -2,6 +2,9 @@ Here is the small and simpli app written on NodeJs, with NestJS and Typescript. 
 Also i like a lot that fact that freamwork support for free groups with few people and community
 Have Fun :)
 
+##
+If you want to run this app in your local machine please set up your current path to mongodb schema
+
 ## Installation
 
 ```bash
